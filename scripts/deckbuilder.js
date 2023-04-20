@@ -2,7 +2,7 @@
 
 import { cardDeck } from "./carddata.js";
 const allCards = Object.assign(cardDeck);
-
+let invertedCards = true;
 let currentHoverTarget;
 var r = document.querySelector(":root");
 var cardIndex = deckSetup(allCards);
@@ -21,7 +21,7 @@ const cardFaces = document.getElementsByClassName("cardface");
 const buttonHolder = document.querySelector(".buttonholder");
 
 const resetButton = document.getElementById("resetdeck");
-const configButton = document.getElementById("config");
+// const configButton = document.getElementById("config");
 const configClose = document.getElementById("closex");
 
 const overlayElement = document.querySelector(".helpoverlay");
@@ -34,12 +34,9 @@ var activeCard;
 overlayElement.addEventListener("click", clearOverlays);
 resetButton.addEventListener("click", resetDeck);
 helpButton.addEventListener("click", toggleHelp);
-configButton.addEventListener("click", toggleCustomize);
-configClose.addEventListener("click", toggleCustomize);
+// configButton.addEventListener("click", toggleCustomize);
+// configClose.addEventListener("click", toggleCustomize);
 document.addEventListener("keypress", getKeyboardInput);
-
-var rs = getComputedStyle(r);
-console.log(rs.getPropertyValue("--card-height"));
 
 createDeck();
 
@@ -120,13 +117,36 @@ function createDeck() {
 
     allCards[myKey]["angle"] = 0;
     let myCard = document.createElement("div");
-
-    myCard.setAttribute("class", "card");
-    myCard.innerHTML =
-      "<div class='cardface " + cardID + "' id='" + cardID + "'></div>";
+    myCard.classList.add("card");
     myCard.classList.add("indeck");
     location.appendChild(myCard);
     activeCard = myCard;
+    let myContent = document.createElement("div");
+    myContent.classList.add("content");
+
+    let myFace = document.createElement("div");
+    myFace.classList.add("cardface");
+    myFace.classList.add(cardID);
+    myCard.id = cardID;
+    let myBack = document.createElement("div");
+    myBack.classList.add("cardback");
+    myContent.classList.add("flipped");
+    myBack.setAttribute("data-name", "");
+
+    location.appendChild(myCard);
+    myCard.appendChild(myContent);
+    myContent.appendChild(myBack);
+    myContent.appendChild(myFace);
+
+    activeCard = myCard;
+    let flip = Math.floor(Math.random() * 2) == 0;
+    if (flip) {
+      myCard.classList.add("inverted");
+      let inverseName = allCards[myKey]["cardname"] + "(inv)";
+      myFace.setAttribute("data-name", inverseName);
+    } else {
+      myFace.setAttribute("data-name", allCards[myKey]["cardname"]);
+    }
   }
   for (let k = 0; k < moveCard.length; k++) {
     dragElement(moveCard[k]);
@@ -153,17 +173,16 @@ function createSpread() {
     let myCard = document.createElement("div");
 
     myCard.setAttribute("class", "spreadcard");
-    myCard.innerHTML = "<div class='cardface " + cardID + "'></div>";
+    myCard.innerHTML = "<div class='spreadface " + cardID + "'></div>";
     location.appendChild(myCard);
   }
 }
 
 function primeInfo() {
-  cardInfo.innerHTML = activeCard["id"];
-  const sourceId = activeCard.firstElementChild.id;
-  const sourceInfo = allCards[sourceId];
-
-  cardInfo.innerHTML = `<div><h2>${sourceInfo.cardname}</h2></div>`;
+  //   cardInfo.innerHTML = activeCard["id"];
+  //   const sourceId = activeCard.id;
+  //   const sourceInfo = allCards[sourceId];
+  //   cardInfo.innerHTML = `<div><h2>${sourceInfo.cardname}</h2></div>`;
 }
 
 function shuffleAnimation() {
@@ -240,6 +259,10 @@ function dragElement(elmnt) {
     document.onmousemove = null;
     elmnt.style.transition = "0.5s ease";
     elmnt.classList.remove("indeck");
+    let myContent = elmnt.firstElementChild;
+    myContent.classList.remove("flipped");
+    cardInfo.innerHTML = `<div><h2>${myContent.lastChild.dataset.name}</h2></div>`;
+
     cardsInDeck = document.getElementsByClassName("indeck");
 
     // console.log(elmnt.id);
@@ -256,10 +279,12 @@ function updateInfo(e) {
   // console.log(e.target);
   // console.log(e.target.id);
 
-  const hoverCard = e.target.id;
-  if (hoverCard && hoverCard !== currentHoverTarget) {
+  const hoverCard = e.target;
+  console.log(hoverCard.dataset.name);
+
+  if (hoverCard.dataset.name && hoverCard && hoverCard !== currentHoverTarget) {
     currentHoverTarget = hoverCard;
-    cardInfo.innerHTML = `<div><h2>${allCards[hoverCard].cardname}</h2></div>`;
+    cardInfo.innerHTML = `<div><h2>${hoverCard.dataset.name}</h2></div>`;
   }
 }
 
@@ -307,6 +332,7 @@ function getKeyboardInput(event) {
     cardRotationValue = 0;
     activeCard.classList.add("indeck");
     activeCard.parentNode.prepend(activeCard);
+    activeCard.firstElementChild.classList.add("flipped");
   } else if (event.key == "b") {
     activeCard.parentNode.prepend(activeCard);
   } else if (event.key == "?") {
@@ -319,11 +345,9 @@ function getKeyboardInput(event) {
     toggleCustomize();
   } else if (event.key === "g") {
     toggleGreenScreen();
-  } else if (event.key === "z") {
-    zoomCard();
   } else if (event.key === "l") {
     toggleSpread();
-  } else if (event.key === "k") {
+  } else if (event.key === "z") {
     resizeCards();
   }
 
@@ -371,12 +395,12 @@ function resetDeck() {
   cardIndex = deckSetup(allCards);
   createDeck();
   // cardInfo.classList.add("hidden");
-  unZoomAll();
+  //   unZoomAll();
   primeInfo;
 }
 
 function zoomCard() {
-  activeCard.firstElementChild.classList.toggle("zoomcard");
+  //   activeCard.firstElementChild.classList.toggle("zoomcard");
 }
 
 function unZoomAll() {

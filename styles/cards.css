@@ -58,7 +58,7 @@ button {
 .cardinfo {
   display: grid;
   /* grid-template-rows: auto 1fr auto; */
-  width: 350px;
+  width: 400px;
   border-radius: 15px;
   background-color: antiquewhite;
   height: 2rem;
@@ -73,17 +73,18 @@ button {
 }
 
 .card {
-  border: 8px solid white;
   margin: 0;
   padding: 0;
   border-radius: 8px;
   position: absolute;
   top: 0;
   left: 0;
-  box-shadow: 2px 2px 4px black;
-  transition: none;
-  transform: rotate(0deg);
+  /* box-shadow: 2px 2px 4px black; */
+  /* transition: none; */
+  /* transform: rotate(0deg); */
 
+  height: var(--card-height);
+  width: var(--card-width);
   /* transition: 0.25s; */
   /* width: 0; */
   /* flex-basis: 100%; */
@@ -111,13 +112,41 @@ button {
   border-radius: 8px;
   box-shadow: 2px 2px 4px black;
   position: relative;
-}
-
-.cardface {
-  background-image: url("../img/cardback.png");
-  background-size: cover;
   height: var(--card-height);
   width: var(--card-width);
+}
+
+.cardface,
+.cardback {
+  border: 8px solid white;
+  border-radius: 10px;
+  background-image: url("../img/cardback.png");
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+  object-fit: cover;
+  position: absolute;
+  backface-visibility: hidden;
+
+  top: 0;
+  left: 0;
+  /* transform: rotateY(180deg); */
+}
+
+.cardback {
+  transform: rotateY(180deg);
+}
+
+.spreadface {
+  /* border: 8px solid white;
+  border-radius: 10px; */
+  background-image: url("../img/cardback.png");
+  background-size: cover;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
@@ -292,9 +321,14 @@ main {
   background-color: aquamarine;
 }
 
-/* .indeck 
+.flipped {
   transform: rotateY(180deg);
-} */
+}
+
+.inverted {
+  transform: rotateX(180deg);
+  top: 14px;
+}
 
 .closex {
   position: absolute;
@@ -327,4 +361,13 @@ main {
   transform-origin: 50% 50%;
   border: 6px solid white;
   border-radius: 10px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  box-sizing: border-box;
 }
