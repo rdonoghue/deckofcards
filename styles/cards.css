@@ -371,3 +371,12 @@ main {
   transform-style: preserve-3d;
   box-sizing: border-box;
 }
+
+.greenscreen {
+  background: unset;
+  background-color: rgb(0, 177, 64);
+}
+
+.noshadow {
+  box-shadow: 0 0 0 rgb(0, 177, 64);
+}

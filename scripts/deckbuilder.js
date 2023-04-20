@@ -465,3 +465,18 @@ function unZoomAll() {
     k.classList.remove("zoomcard");
   }
 }
+
+function toggleGreenScreen() {
+  pageBody.classList.toggle("greenscreen");
+  var allCards = document.querySelectorAll(".card");
+
+  if (pageBody.classList.contains("greenscreen")) {
+    for (const k of allCards) {
+      k.classList.add("noshadow");
+    }
+  } else {
+    for (const k of allCards) {
+      k.classList.remove("noshadow");
+    }
+  }
+}
