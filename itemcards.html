@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="icon" href="img/unicorn.ico" type="image/x-icon" />
+
+    <link rel="shortcut icon" href="img/unicorn.ico" type="image/x-icon" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aboreto&family=Berkshire+Swash&family=Jost:wght@400;700&family=Nanum+Myeongjo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/shared.css" />
+    <link rel="stylesheet" href="styles/itemcards.css" />
+    <link rel="stylesheet" href="styles/namedcards.css" />
+
+    
+    
+    <script src="scripts/makeheader.js" type="module" defer></script>
+
+    <script src="scripts/shared.js" type="module" defer></script>
+    <script src="scripts/itemcards.js" type="module" defer></script>
+
+    <title>Draw a Trump</title>
+  </head>
+  <body>
+    <div class="firsttime">Drag cards off the top of the deck to arrange them on the desktop.  Hit "?" to see other options. </div>
+    <div class="hidden helpoverlay"></div>
+    <div class="hidden deckdetails">
+      <h3>Customize Deck</h3>
+      <p>Currently showing:</p>
+      <form id="customizeDeck" action="" method="POST">
+        <div class="tidycheckboxes">
+          <label class="cbholder"
+            >Scions of Amber
+            <input type="checkbox" name="scions" id="cb-scions" />
+            <span class="checkmark"></span>
+          </label>
+          <label class="cbholder"
+            >Amber Nobility
+            <input type="checkbox" name="nobles" id="cb-nobles" />
+            <span class="checkmark"></span>
+          </label>
+          <label class="cbholder"
+            >Citizens of Amber
+            <input type="checkbox" name="citizens" id="cb-citizens" />
+            <span class="checkmark"></span>
+          </label>
+          <label class="cbholder"
+            >Denizens of Shadow
+            <input type="checkbox" name="shadows" id="cb-shadows" />
+            <span class="checkmark"></span>
+          </label>
+          <label class="cbholder"
+            >Lasair Caite
+            <input type="checkbox" name="lc" id="cb-lc" />
+            <span class="checkmark"></span>
+          </label>
+          <label class="cbholder"
+            >Places
+            <input type="checkbox" name="places" id="cb-places" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="btn2-holder">
+          <button class="btn2">Submit</button>
+        </div>
+        <div class="closex" id="closex">X</div>
+      </form>
+      <h3>Other Actions</h3>
+      <div class="gofishform">
+        Fish out a specific card:
+        <form action="" method="POST" id="gofish">
+          <div>
+            <select name="fishcards" id="fishcards"></select>
+          </div>
+          <div>
+            <button>Go Fish</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="hidden helpdetails">
+      <ul>
+        <li>
+          <p>d</p>
+          <p>Turn active card 90 degrees right.</p>
+        </li>
+        <li>
+          <p>a</p>
+          <p>Turn active card 90 degrees left.</p>
+        </li>
+        <li>
+          <p>s</p>
+          <p>Flip card.</p>
+        </li>
+        <li>
+          <p>w</p>
+          <p>Return card to upright position.</p>
+        </li>
+        <li>
+          <p>e</p>
+          <p>Nudge card right.</p>
+        </li>
+        <li>
+          <p>q</p>
+          <p>Nudge card left.</p>
+        </li>
+        <li>
+          <p>b</p>
+          <p>Move front card to back.</p>
+        </li>
+        <li>
+          <p>t</p>
+          <p>Return front card to the deck.</p>
+        </li>
+
+        <li>
+          <p>h</p>
+          <p>Hide/unhide deck and page elements.</p>
+        </li>
+        <li>
+          <p>?</p>
+          <p>Toggle help.</p>
+        </li>
+        <li>
+          <p>i</p>
+          <p>Toggle card information.</p>
+        </li>
+        <li>
+          <p>g</p>
+          <p>Toggle easy color isolation mode</p>
+        </li>
+        <li>
+          <p>x</p>
+          <p>Reset the page.</p>
+        </li>
+        <li>
+          <p>z</p>
+          <p>Zoom active card in/out</p>
+        </li>
+      </ul>
+    </div>
+    <header>
+      <div class="overlay"></div>
+
+      <div class="hamburger">
+        <img src="img/menu.png" class="menuburger" />
+      </div>
+
+      <ul id="navigator">
+        <li><a href="index.html">About</a></li>
+        <li><a href="scions.html">Scions of Amber</a></li>
+        <li><a href="cards-ambercourt.html">The Court of Amber</a></li>
+        <li><a href="cards-other.html">Others of Note</a></li>
+        <li><a href="places.html">Places</a></li>
+        <li><a href="flipcards.html">The Spread</a></li>
+        <li><a href="draw1.html">Draw a Card</a></li>
+        <li><a href="divination.html">Divination</a></li>
+        <li class="active"><a href="itemcards.html">Tabletop</a></li>
+        <li><a href="https://prosperity-amber.slab.com">Slab</a></li>
+      </ul>
+    </header>
+    <div class="deckholder">
+      <div class="buttonholder">
+        <button id="resetdeck">Reset</button>
+        <button id="gethelp">Help</button>
+        <button id="config">Configure</button>
+      </div>
+      <!-- <div class="deckspace"> -->
+        <div id="playspace" class="playspace"></div>
+        <div class="spacer"></div>
+        <div id="cardInfo" class="cardinfo"></div>
+      <!-- </div> -->
+      </div>
+    </main>
+    <aside id="preloader" style="visibility: hidden"></aside>
+  </body>
+</html>

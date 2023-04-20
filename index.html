@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aboreto&family=Berkshire+Swash&family=Jost:wght@400;700&family=Nanum+Myeongjo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles/cards.css" />
+
+    <script src="scripts/deckbuilder.js" type="module" defer></script>
+
+    <title>Card Table</title>
+  </head>
+  <body>
+    <div class="firsttime">
+      Drag cards off the top of the deck to arrange them on the desktop. Hit "?"
+      to see other options.
+    </div>
+    <div class="hidden spreadoverlay">
+      <div id="cardspread" class="cardspread">
+        <div class="cardface lovers"></div>
+        <div class="cardface death"></div>
+        <div class="cardface lovers"></div>
+        <div class="cardface death"></div>
+        <div class="cardface lovers"></div>
+        <div class="cardface death"></div>
+      </div>
+    </div>
+    <div class="hidden helpoverlay"></div>
+    <div class="hidden deckdetails">
+      <div class="closex" id="closex">X</div>
+
+      <h3>Other Actions</h3>
+      <div class="gofishform">
+        Fish out a specific card:
+        <form action="" method="POST" id="gofish">
+          <div>
+            <select name="fishcards" id="fishcards"></select>
+          </div>
+          <div>
+            <button>Go Fish</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="hidden helpdetails">
+      <ul>
+        <li>
+          <p>d</p>
+          <p>Turn active card 90 degrees right.</p>
+        </li>
+        <li>
+          <p>a</p>
+          <p>Turn active card 90 degrees left.</p>
+        </li>
+        <li>
+          <p>s</p>
+          <p>Flip card.</p>
+        </li>
+        <li>
+          <p>w</p>
+          <p>Return card to upright position.</p>
+        </li>
+        <li>
+          <p>e</p>
+          <p>Nudge card right.</p>
+        </li>
+        <li>
+          <p>q</p>
+          <p>Nudge card left.</p>
+        </li>
+        <li>
+          <p>b</p>
+          <p>Move front card to back.</p>
+        </li>
+        <li>
+          <p>t</p>
+          <p>Return front card to the deck.</p>
+        </li>
+
+        <li>
+          <p>h</p>
+          <p>Hide/unhide deck and page elements.</p>
+        </li>
+        <li>
+          <p>?</p>
+          <p>Toggle help.</p>
+        </li>
+        <li>
+          <p>i</p>
+          <p>Toggle card information.</p>
+        </li>
+        <li>
+          <p>g</p>
+          <p>Toggle easy color isolation mode</p>
+        </li>
+        <li>
+          <p>x</p>
+          <p>Reset the page.</p>
+        </li>
+        <li>
+          <p>z</p>
+          <p>Zoom active card in/out</p>
+        </li>
+        <li>
+          <p>l</p>
+          <p>Show all cards</p>
+        </li>
+        <li>
+          <p>k</p>
+          <p>Toggle big/small cards</p>
+        </li>
+      </ul>
+    </div>
+    <header>
+      <div id="cardInfo" class="cardinfo"></div>
+
+      <div class="buttonholder">
+        <button id="resetdeck">Reset</button>
+        <button id="gethelp">Help</button><button id="config">Configure</button>
+      </div>
+    </header>
+    <main>
+      <div class="deckholder">
+        <div id="playspace" class="playspace"></div>
+        <div class="spacer"></div>
+      </div>
+    </main>
+  </body>
+</html>

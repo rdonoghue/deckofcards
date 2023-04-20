@@ -1,0 +1,330 @@
+html {
+  --card-height: 500px;
+  --card-width: 300px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Nanum Myeongjo", serif;
+  color: whitesmoke;
+  font-size: 1.15rem;
+  line-height: 1.75rem;
+  background: linear-gradient(70deg, rgb(36, 11, 19), rgb(62, 18, 22));
+  display: flex;
+  flex-direction: column;
+}
+
+.deckholder {
+  position: relative;
+  margin: 0 1rem;
+}
+
+.buttonholder {
+  display: flex;
+  width: 340px;
+  margin-left: 0.5rem;
+}
+
+button {
+  all: unset;
+  margin: 0.1rem 0;
+  text-align: center;
+  background: linear-gradient(70deg, rgb(255, 228, 196), rgb(246, 209, 164));
+  color: rgb(22, 22, 22);
+  border-radius: 0.25ch;
+  box-shadow: 1px 1px 2px rgb(0, 0, 0);
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  width: 10rem;
+  display: block;
+  margin: 1rem 1rem;
+  cursor: pointer;
+}
+
+.playspace {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 0.25rem 1.25rem;
+  /* height: 500px; */
+}
+
+.cardinfo {
+  display: grid;
+  /* grid-template-rows: auto 1fr auto; */
+  width: 350px;
+  border-radius: 15px;
+  background-color: antiquewhite;
+  height: 2rem;
+  margin: 1ch;
+  padding: 1ch;
+}
+.cardinfo h2 {
+  color: rgb(62, 18, 22);
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: "Aboreto", cursive;
+}
+
+.card {
+  border: 8px solid white;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 2px 4px black;
+  transition: none;
+  transform: rotate(0deg);
+
+  /* transition: 0.25s; */
+  /* width: 0; */
+  /* flex-basis: 100%; */
+  /* flex-grow: 1; */
+}
+
+.cardspread {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  top: 4rem;
+  gap: 1rem;
+  width: 90%;
+  min-height: 100%;
+  overflow: scroll;
+  /* border: 2px solid yellow; */
+  padding: 1rem, 3rem;
+}
+.spreadcard {
+  border: 8px solid white;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px black;
+  position: relative;
+}
+
+.cardface {
+  background-image: url("../img/cardback.png");
+  background-size: cover;
+  height: var(--card-height);
+  width: var(--card-width);
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+  object-fit: cover;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+  border: 2px solid green;
+}
+
+.firsttime {
+  /* height: 10rem; */
+  width: 20rem;
+  background-color: rgba(246, 209, 164, 0.8);
+  color: black;
+  border-radius: 8px;
+  position: absolute;
+  top: 20rem;
+  left: calc(50% - 10rem);
+  padding: 2rem;
+}
+
+header {
+  display: flex;
+  height: 5rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+main {
+  display: flex;
+  width: 100%;
+}
+
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  visibility: hidden;
+}
+
+.spreadoverlay {
+  position: fixed;
+  min-height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 20;
+  overflow: scroll;
+}
+
+.helpoverlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+}
+
+.helpdetails {
+  position: fixed;
+  width: 60%;
+  top: 10rem;
+  left: 20%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgb(246, 209, 164);
+  z-index: 30;
+  font-family: "Jost", sans-serif;
+  color: rgb(22, 22, 22);
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.helpdetails ul {
+  display: flex;
+  list-style: none;
+  /* flex-basis: 50%; */
+  /* flex-basis: 2; */
+  flex-wrap: wrap;
+  margin: 1rem;
+  padding: 0;
+  justify-content: center;
+}
+
+.helpdetails li {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  gap: 1rem;
+  flex-basis: 45%;
+  gap: 1rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+
+  /* border: 1px solid black; */
+}
+
+.helpdetails li:nth-child(3),
+.helpdetails li:nth-child(4),
+.helpdetails li:nth-child(7),
+.helpdetails li:nth-child(8),
+.helpdetails li:nth-child(11),
+.helpdetails li:nth-child(12),
+.helpdetails li:nth-child(15),
+.helpdetails li:nth-child(16) {
+  background-color: rgb(241, 185, 117);
+}
+
+.helpdetails p {
+  align-items: center;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.helpdetails p:first-of-type {
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.deckdetails {
+  position: fixed;
+  width: 60%;
+  top: 10rem;
+  left: 20%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgb(246, 209, 164);
+  z-index: 30;
+  font-family: "Jost", sans-serif;
+  color: rgb(22, 22, 22);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.deckdetails form {
+  display: flex;
+  flex-direction: column;
+}
+
+.deckdetails h3 {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.deckdetails p {
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+}
+
+.deckdetails button {
+  background-color: aquamarine;
+}
+
+/* .indeck 
+  transform: rotateY(180deg);
+} */
+
+.closex {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.closex:hover {
+  border: 1px solid black;
+}
+
+.btn2 {
+  background-color: aqua;
+}
+.btn2-holder {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.zoomcard {
+  transform: scale(1.75);
+  transform-origin: 50% 50%;
+  border: 6px solid white;
+  border-radius: 10px;
+}
