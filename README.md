@@ -13,8 +13,12 @@ This is a pure javascript site - no backend or databases - because the intent is
 - Write up instructions and guidance, espcially re card-size
 - See about fragmenting the code up a bit - currently it's just a big monolith
 - Maybe see if I can put things liek card size in a config fil
-- Replace some of the uglier arcana. Hanged Man, I'm looking at you
+- Replace some of the uglier arcana, maybe start doing minor arcana?
 - Replace the clunky buttons up top with some actually useful icons.
+- Decide how/if to display explanatory text about the cards.
+- Add configuration toggles for inverted cards and how much information to show
+- "Go Fish" function to draw a specific card out of the deck?
+  - Originally had this as a dropdown, but could I do a scrolling list of thumbnails? Might look cool, but also be unclear based on size.
 
 ## Someday
 
