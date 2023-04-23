@@ -21,6 +21,8 @@ body {
 .deckholder {
   position: relative;
   margin: 0 1rem;
+  height: calc(var(--card-height) + 50px);
+  width: calc(var(--card-height) + 5rem);
 }
 
 .buttonholder {
@@ -52,6 +54,7 @@ button {
   flex-wrap: wrap;
   position: relative;
   margin: 0.25rem 1.25rem;
+  /* border: 3px solid green; */
   /* height: 500px; */
 }
 
@@ -79,16 +82,17 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  /* box-shadow: 2px 2px 4px black; */
-  /* transition: none; */
-  /* transform: rotate(0deg); */
-
   height: var(--card-height);
   width: var(--card-width);
-  /* transition: 0.25s; */
-  /* width: 0; */
-  /* flex-basis: 100%; */
-  /* flex-grow: 1; */
+}
+.fullcard {
+  height: var(--card-height);
+  width: var(--card-width);
+}
+
+.smallcard {
+  height: calc(var(--card-height) * 0.5) !important;
+  width: calc(var(--card-width) * 0.5) !important;
 }
 
 .cardspread {
@@ -156,7 +160,6 @@ button {
 .hidden {
   display: none;
   visibility: hidden;
-  border: 2px solid green;
 }
 
 .firsttime {
@@ -326,8 +329,11 @@ main {
 }
 
 .inverted {
-  transform: rotateX(180deg);
-  top: 14px;
+  transform: scaleY(-1) translate(0, -10px);
+  /* transform: translate(4rem,0) */
+  /* top: 16px; */
+  /* left: 5rem; */
+  /* border: 8px solid pink !important; */
 }
 
 .closex {

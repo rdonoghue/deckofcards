@@ -1,7 +1,12 @@
 "use strict";
 
 import { cardDeck } from "./carddata.js";
+
+let cardHeight = "500";
+let cardWidth = "300";
+
 const allCards = Object.assign(cardDeck);
+let cardSize = "full";
 let invertedCards = true;
 let currentHoverTarget;
 var r = document.querySelector(":root");
@@ -38,13 +43,14 @@ helpButton.addEventListener("click", toggleHelp);
 // configClose.addEventListener("click", toggleCustomize);
 document.addEventListener("keypress", getKeyboardInput);
 
+r.style.setProperty("--card-height", `${cardHeight}px`);
+r.style.setProperty("--card-width", `${cardWidth}px`);
 createDeck();
 
 function resizeCards() {
   console.log("Resizing cards");
-  var rs = getComputedStyle(r);
-  const currentHeight = rs.getPropertyValue("--card-height");
-  if (currentHeight === "500px") {
+
+  if (cardSize === "full") {
     makeCardsSmall();
   } else {
     makeCardsBig();
@@ -52,11 +58,17 @@ function resizeCards() {
 }
 
 function makeCardsSmall() {
+  // for (let k = 0; k < moveCard.length; k++) {
+  //   moveCard[k].classList.add("smallcard)");
+  // }
+  cardSize = "small";
   r.style.setProperty("--card-height", "250px");
   r.style.setProperty("--card-width", "150px");
 }
 
 function makeCardsBig() {
+  cardSize = "full";
+
   r.style.setProperty("--card-height", "500px");
   r.style.setProperty("--card-width", "300px");
 }
@@ -182,7 +194,7 @@ function primeInfo() {
   //   cardInfo.innerHTML = activeCard["id"];
   //   const sourceId = activeCard.id;
   //   const sourceInfo = allCards[sourceId];
-  //   cardInfo.innerHTML = `<div><h2>${sourceInfo.cardname}</h2></div>`;
+  cardInfo.innerHTML = `<div><h2></h2></div>`;
 }
 
 function shuffleAnimation() {
@@ -396,7 +408,7 @@ function resetDeck() {
   createDeck();
   // cardInfo.classList.add("hidden");
   //   unZoomAll();
-  primeInfo;
+  primeInfo();
 }
 
 function zoomCard() {
