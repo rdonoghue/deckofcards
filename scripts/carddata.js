@@ -155,4 +155,33 @@ cardDeck["world"] = {
   tagline: "The World",
   blurb: "<p>The World</p>",
 };
+
+cardDeck["acecoins"] = {
+  cardname: "Ace of Coins",
+  url: "../img/acecoins.png",
+  tagline: "Ace of Coins",
+  blurb: "<p>Ace of Coins</p>",
+};
+
+cardDeck["2coins"] = {
+  cardname: "Two of Coins",
+  url: "../img/2coins.png",
+  tagline: "two of Coins",
+  blurb: "<p>Two of Coins</p>",
+};
+
+cardDeck["3coins"] = {
+  cardname: "Three of Coins",
+  url: "../img/3coins.png",
+  tagline: "Three of Coins",
+  blurb: "<p>Three of Coins</p>",
+};
+
+cardDeck["4coins"] = {
+  cardname: "Four of Coins",
+  url: "../img/4coins.png",
+  tagline: "Four of Coins",
+  blurb: "<p>Four of Coins</p>",
+};
+
 export { cardDeck };
