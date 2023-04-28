@@ -19,6 +19,8 @@ This is a pure javascript site - no backend or databases - because the intent is
 - Add configuration toggles for inverted cards and how much information to show
 - "Go Fish" function to draw a specific card out of the deck?
   - Originally had this as a dropdown, but could I do a scrolling list of thumbnails? Might look cool, but also be unclear based on size.
+  - Dagnabbit, pivoting is breaking on inverted cards. Going to need to add an "if" check in there
+- That four of coins is awesome, but there's no visual indicator that it's inverted. Oops.
 
 ## Someday
 
