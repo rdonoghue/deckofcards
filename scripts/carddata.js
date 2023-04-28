@@ -163,21 +163,21 @@ cardDeck["acecoins"] = {
   blurb: "<p>Ace of Coins</p>",
 };
 
-cardDeck["2coins"] = {
+cardDeck["twocoins"] = {
   cardname: "Two of Coins",
   url: "../img/2coins.png",
   tagline: "two of Coins",
   blurb: "<p>Two of Coins</p>",
 };
 
-cardDeck["3coins"] = {
+cardDeck["threecoins"] = {
   cardname: "Three of Coins",
   url: "../img/3coins.png",
   tagline: "Three of Coins",
   blurb: "<p>Three of Coins</p>",
 };
 
-cardDeck["4coins"] = {
+cardDeck["fourcoins"] = {
   cardname: "Four of Coins",
   url: "../img/4coins.png",
   tagline: "Four of Coins",
