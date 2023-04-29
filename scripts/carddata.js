@@ -184,4 +184,18 @@ cardDeck["fourcoins"] = {
   blurb: "<p>Four of Coins</p>",
 };
 
+cardDeck["fivecoins"] = {
+  cardname: "Five of Coins",
+  url: "../img/45oins.png",
+  tagline: "Five of Coins",
+  blurb: "<p>Five of Coins</p>",
+};
+
+cardDeck["sixcoins"] = {
+  cardname: "Six of Coins",
+  url: "../img/6coins.png",
+  tagline: "Six of Coins",
+  blurb: "<p>Six of Coins</p>",
+};
+
 export { cardDeck };
